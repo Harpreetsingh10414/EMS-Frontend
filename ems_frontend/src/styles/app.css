@@ -1,0 +1,17 @@
+.app-container {
+    text-align: center;
+    padding: 3rem;
+  }
+  
+  .logos {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  img {
+    width: 120px;
+    height: auto;
+  }
+  
