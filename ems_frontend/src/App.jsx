@@ -1,22 +1,15 @@
-//import logo from './logo.svg';
-import * as React from 'react';
+import React from "react";
+import "./App.css";
+import AppRoutes from "./routes/AppRoutes";
 
-import './App.css'; 
-import { Route, Routes } from 'react-router-dom' 
-import Header from './pages/header/header';
-import PostUser from "./pages/employee/PostUser.jsx"
-
-
-function App() {
+const App = () => {
   return (
-   <>
-   <Header />
-   <Routes> 
-    <Route  path="/employee" element={<PostUser/>} />   
-
-
-   </Routes>
-   </>
+    <div
+      className="min-h-screen bg-cover bg-center"
+      style={{ backgroundImage: 'url("otw_bg.png")' }}
+    >
+      <AppRoutes />
+    </div>
   );
 }
 
