@@ -1,0 +1,36 @@
+.calendar-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+.calendar-view {
+  flex: 3;
+}
+
+.event-sidebar {
+  flex: 1;
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+}
+
+.event-sidebar h3 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.event-sidebar ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.event-sidebar li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
