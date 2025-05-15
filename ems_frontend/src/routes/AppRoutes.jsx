@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "../pages/auth/Login";
 import Dashboard from "../pages/Dashboard";
 import PostUser from "../pages/employee/PostUser";
+import NotFound from "../pages/NotFound";
 
 export default function AppRoutes() {
   return (
@@ -9,7 +10,8 @@ export default function AppRoutes() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/manager/PostUser" element={<PostUser />} />
+        <Route path="/manager/post-user" element={<PostUser />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
