@@ -1,15 +1,17 @@
 import React from "react";
-import "./styles/app.css";
-import reactLogo from "./assets/react-logo.png";
-import viteLogo from "./assets/vite-logo.png";
+import "./App.css";
 import AppRoutes from "./routes/AppRoutes";
+import "./UI/MyLeaves.css";
 
 const App = () => {
   return (
-    <>
+    <div
+      className="min-h-screen bg-cover bg-center"
+      style={{ backgroundImage: 'url("/otw_bg.png")' }}
+    >
       <AppRoutes />
-    </>
+    </div>
   );
-};
+}
 
 export default App;
