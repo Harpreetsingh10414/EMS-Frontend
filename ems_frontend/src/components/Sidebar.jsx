@@ -68,7 +68,7 @@ function Sidebar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -10 }}
             transition={{ duration: 0.2 }}
-            className="max-w-fit h-dvh  bg-neutral-200 shadow-md z-50"
+            className="max-w-fit h-screen bg-neutral-200 shadow-md z-50"
             onMouseLeave={() => {
               if (!checkSidebar) setShowSidebar(false);
             }}

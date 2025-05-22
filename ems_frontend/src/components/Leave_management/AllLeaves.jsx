@@ -1,5 +1,5 @@
 import "./Leave.css";
-export default function All_leave() {
+export default function AllLeaves() {
   const today = new Date().toISOString().split("T")[0];
 
   const allLeaves = [

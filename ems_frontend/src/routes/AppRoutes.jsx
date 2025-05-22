@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "../pages/auth/Login";
 import Dashboard from "../pages/Dashboard";
-import PostUser from "../pages/employee/PostUser";
+
 import NotFound from "../pages/NotFound";
 import Layout from "../pages/Layout";
 import It_AddNew from "../components/It_person/It_AddNew";
@@ -14,6 +14,10 @@ import Allocate_task from "../components/Task_Management/Allocate_task";
 import Allocated_task from "../components/Task_Management/Allocated_task";
 import All_task from "../components/Task_Management/All_task";
 
+import AllLeaves from "../components/Leave_management/AllLeaves"; // Manager view
+import ApplyLeave from "../components/My_Leave/ApplyLeave";
+import MyLeaves from "../components/My_Leave/MyLeaves";
+
 export default function AppRoutes() {
   return (
     <BrowserRouter>
@@ -21,13 +25,10 @@ export default function AppRoutes() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="dashboard" element={<Dashboard />} />
+          {/* IT Person Routes */}
           <Route path="/it-person/add-new" element={<It_AddNew />} />
           <Route path="/it-person/view-all" element={<It_ViewAll />} />
-          <Route
-            path="/leave-management/employee-wise"
-            element={<Employee_wise />}
-          />
-          <Route path="/leave-management/all_leave" element={<All_leave />} />
+          {/* Attendece Routes */}
           <Route
             path="/attendence/employee-wise"
             element={<Employee_wise_attendence />}
@@ -36,6 +37,7 @@ export default function AppRoutes() {
             path="/attendence/all-attendence"
             element={<All_attendence />}
           />
+          {/* Task Management Routes */}
           <Route
             path="/task-management/allocate-task"
             element={<Allocate_task />}
@@ -45,10 +47,18 @@ export default function AppRoutes() {
             element={<Allocated_task />}
           />
           <Route path="/task-management/all-task" element={<All_task />} />
+
+          {/* Leave Management Routes */}
+          <Route
+            path="/leave-management/employee-wise"
+            element={<Employee_wise />}
+          />
+          <Route path="/leave-management/all_leave" element={<All_leave />} />
+          <Route path="/my-leave/apply-leave" element={<ApplyLeave />} />
+          <Route path="/my-leave/my-leaves" element={<MyLeaves />} />
         </Route>
 
         <Route path="/login" element={<Login />} />
-        <Route path="/manager/post-user" element={<PostUser />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
