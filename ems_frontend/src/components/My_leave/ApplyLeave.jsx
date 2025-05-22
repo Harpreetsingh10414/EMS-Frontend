@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+// import "./Leave.css";
 
 const leaveTypes = ["Sick Leave", "Casual Leave", "Special Leave"];
 
@@ -18,7 +18,7 @@ export default function ApplyLeave() {
     if (fromDate && toDate) {
       const days =
         (toDate.setHours(0, 0, 0, 0) - fromDate.setHours(0, 0, 0, 0)) /
-        (1000 * 60 * 60 * 24) +
+          (1000 * 60 * 60 * 24) +
         1;
       setDuration(days > 0 ? days : 0);
     }
@@ -27,12 +27,22 @@ export default function ApplyLeave() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Submit to backend (use service layer)
-    console.log({ fromDate, toDate, duration, leaveType, contact, responsible, reason });
+    console.log({
+      fromDate,
+      toDate,
+      duration,
+      leaveType,
+      contact,
+      responsible,
+      reason,
+    });
   };
 
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-2xl shadow-xl mt-6">
-      <h2 className="text-2xl font-semibold mb-4 text-center">Apply for Leave</h2>
+      <h2 className="text-2xl font-semibold mb-4 text-center">
+        Apply for Leave
+      </h2>
       <form className="grid gap-4" onSubmit={handleSubmit}>
         <div>
           <label className="block font-medium mb-1">From Date</label>
@@ -71,7 +81,9 @@ export default function ApplyLeave() {
           >
             <option value="">Select type</option>
             {leaveTypes.map((type, idx) => (
-              <option key={idx} value={type}>{type}</option>
+              <option key={idx} value={type}>
+                {type}
+              </option>
             ))}
           </select>
         </div>
@@ -86,7 +98,9 @@ export default function ApplyLeave() {
           />
         </div>
         <div>
-          <label className="block font-medium mb-1">Responsible Person in Absence</label>
+          <label className="block font-medium mb-1">
+            Responsible Person in Absence
+          </label>
           <input
             type="text"
             value={responsible}
