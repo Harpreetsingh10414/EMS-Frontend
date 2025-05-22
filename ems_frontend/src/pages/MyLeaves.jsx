@@ -1,68 +1,56 @@
-import { useEffect, useState } from "react";
-import { Calendar, momentLocalizer } from "react-big-calendar";
-import moment from "moment";
-import "react-big-calendar/lib/css/react-big-calendar.css";
+import React from "react";
+import "../UI/MyLeaves.css";
 
-
-
-const localizer = momentLocalizer(moment);
 
 const MyLeaves = () => {
-  const [events, setEvents] = useState([]);
-  const [internetEvents, setInternetEvents] = useState([]);
-
-  useEffect(() => {
-    // Mocked Leave Events
-    setEvents([
-      {
-        title: "Sick Leave",
-        start: new Date(2025, 4, 15),
-        end: new Date(2025, 4, 17),
-        allDay: true,
-      },
-    ]);
-
-    // Mocked Internet Events
-    setInternetEvents([
-      { date: "May 20", event: "World Bee Day" },
-      { date: "May 25", event: "Geek Pride Day" },
-    ]);
-  }, []);
-
-  const customDayPropGetter = (date) => {
-    const day = date.getDay();
-    if (day === 0 || day === 6) {
-      return {
-        style: {
-          backgroundColor: "#e3fcef",
-        },
-      };
-    }
-    return {};
-  };
+  const leaves = [
+    {
+      id: 1,
+      from: "2025-05-01",
+      to: "2025-05-03",
+      duration: 3,
+      type: "Sick Leave",
+      reason: "Fever and cold",
+      status: "Approved",
+    },
+    {
+      id: 2,
+      from: "2025-04-18",
+      to: "2025-04-19",
+      duration: 2,
+      type: "Casual Leave",
+      reason: "Family event",
+      status: "Pending",
+    },
+  ];
 
   return (
-    <div className="calendar-wrapper">
-      <div className="calendar-view">
-        <Calendar
-          localizer={localizer}
-          events={events}
-          startAccessor="start"
-          endAccessor="end"
-          style={{ height: 600 }}
-          dayPropGetter={customDayPropGetter}
-        />
-      </div>
-      <div className="event-sidebar">
-        <h3>Events this Month</h3>
-        <ul>
-          {internetEvents.map((e, idx) => (
-            <li key={idx}>
-              <strong>{e.date}</strong>: {e.event}
-            </li>
+    <div className="leaves-container">
+      <h2>My Leaves</h2>
+      <table className="leaves-table">
+        <thead>
+          <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Duration</th>
+            <th>Leave Type</th>
+            <th>Reason</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {leaves.map((leave) => (
+            <tr key={leave.id}>
+              <td>{leave.from}</td>
+              <td>{leave.to}</td>
+              <td>{leave.duration} day(s)</td>
+              <td>{leave.type}</td>
+              <td>{leave.reason}</td>
+              <td>{leave.status}</td>
+            </tr>
           ))}
-        </ul>
-      </div>
+        </tbody>
+      </table>
     </div>
   );
 };
