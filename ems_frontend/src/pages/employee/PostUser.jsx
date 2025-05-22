@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import api from "../../routes/Api";
-
-
+const api = axios.create({
+  baseURL: "http://localhost:8081/admin", // Replace with your API base URL
+});
 const PostUser = () => {
   const [formData, setFormData] = useState({
     fullName: '',
@@ -43,7 +43,7 @@ const handleSubmit = async (e) => {
   } 
     console.log('Form submitted:', data);
   try {
-    const response = await api.post("/postuser", data, {
+    const response = await api.post("/add", data, {
       headers: {
         "Content-Type": "multipart/form-data", // override the default
       },
@@ -160,7 +160,7 @@ const handleSubmit = async (e) => {
                 onChange={handleChange}
                 className="flex-1 border border-gray-300 p-2 rounded bg-gray-100 text-black"
                 accept="image/*"
-                required
+                
                 />
             </div>
             ))}
