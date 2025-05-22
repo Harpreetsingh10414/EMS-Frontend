@@ -35,8 +35,10 @@ function Navbar() {
   const handleMouseLeave = () => setShowMenu(false);
 
   return (
-    <div className="w-full h-[50px] flex justify-between items-center px-4 py-2 bg-fuchsia-400 relative">
-      <h3 className="text-sm md:text-xl font-semibold">OTW SOLUTIONS.</h3>
+    <div className="w-full h-[50px] flex justify-between items-center px-4 py-2 bg-neutral-200 relative">
+      <h3 className="text-sm md:text-xl font-semibold text-black">
+        OTW SOLUTIONS.
+      </h3>
 
       <div
         className="relative"
@@ -46,7 +48,7 @@ function Navbar() {
       >
         <div className="flex flex-row items-center gap-2 cursor-pointer">
           <svg
-            className="w-[28px] h-[28px] md:w-[32px] md:[32px] text-gray-800 dark:text-white "
+            className="w-[28px] h-[28px] md:w-[32px] md:[32px] text-gray-800  "
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -58,12 +60,12 @@ function Navbar() {
               clipRule="evenodd"
             />
           </svg>
-          <h2 className="text-sm md:text-lg md:font-semibold">
+          <h2 className="text-sm md:text-lg md:font-semibold text-black">
             Abhishek Kumar
           </h2>
           {showMenu ? (
             <svg
-              className="w-[24px] h-[24px] text-gray-800 dark:text-white"
+              className="w-[24px] h-[24px] text-gray-800 "
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -81,10 +83,9 @@ function Navbar() {
             </svg>
           ) : (
             <svg
-              className="w-[24px] h-[24px] text-gray-800 dark:text-white"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
+              className="w-[24px] h-[24px] text-gray-800 
+              xmlns="
+              http:width="24" //www.w3.org/2000/svg"
               height="24"
               fill="none"
               viewBox="0 0 24 24"
