@@ -5,10 +5,10 @@ import api from "../../routes/Api";
 
 const PostUser = () => {
   const [formData, setFormData] = useState({
-    fullName: '',
+    empName: '',
     email: '',
     phone: '',
-    adhaar: '',
+    aadhaar: '',
     passport: '',
     dl: '',
     voter: '',
@@ -18,7 +18,7 @@ const PostUser = () => {
     gender: '',
     status: '',
     profilePic: null,
-    adhaarPic: null,
+    aadhaarPic: null,
     passportPic: null,
     dlPic: null,
     voterPic: null,
@@ -34,33 +34,58 @@ const PostUser = () => {
     }
   };
 
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
   e.preventDefault();
-    console.log('Form Data:', formData);
   const data = new FormData();
   for (const key in formData) {
-    data.append(key, formData[key]);
-  } 
-    console.log('Form submitted:', data);
+    if (formData[key] !== null) {
+      data.append(key, formData[key]);
+    }
+  }
+
   try {
-    const response = await api.post("/postuser", data, {
-      headers: {
-        "Content-Type": "multipart/form-data", // override the default
-      },
-    });
-    console.log("Upload successful:", response.data);
+  const response = await api.post("/admin/add", data);
+  console.log("Upload successful:", response.data);
   } catch (error) {
-    console.error("Upload failed:", error);
+    if (error.response) {
+      console.error("Upload failed with response:", error.response.status, error.response.data);
+    } else if (error.request) {
+      console.error("No response received:", error.request);
+    } else {
+      console.error("Error during setup:", error.message);
+    }
   }
 };
 
 
+// const handleSubmit = async (e) => {
+//   e.preventDefault();
+//     console.log('Form Data:', formData);
+//   const data = new FormData();
+//   for (const key in formData) {
+//     data.append(key, formData[key]);
+//   } 
+//     console.log('Form submitted:', data);
+//   try {
+//     const response = await api.post("/admin/add", data, {
+//       headers: {
+//         "Content-Type": "multipart/form-data", // override the default
+//          withCredentials: false
+//       },
+//     });
+//     console.log("Upload successful:", response.data);
+//   } catch (error) {
+//     console.error("Upload failed:", error);
+//   }
+// };
+
+
   const handleReset = () => {
     setFormData({
-      fullName: '',
+      empName: '',
       email: '',
       phone: '',
-      adhaar: '',
+      aadhaar: '',
       passport: '',
       dl: '',
       voter: '',
@@ -70,7 +95,7 @@ const handleSubmit = async (e) => {
       gender: '',
       status: '',
       profilePic: null,
-      adhaarPic: null,
+      aadhaarPic: null,
       passportPic: null,
       dlPic: null,
       voterPic: null,
@@ -86,10 +111,10 @@ const handleSubmit = async (e) => {
 
             {/* Text Inputs */}
             {[
-            ['Full Name', 'fullName', 'text', 'Full Name'],
+            ['Full Name', 'empName', 'text', 'Full Name'],
             ['Email ID', 'email', 'email', 'abc123@gmail.com'],
             ['Phone Number', 'phone', 'tel', '1234567890'],
-            ['Adhaar Number', 'adhaar', 'text' , 'Aadhar No.'],
+            ['Adhaar Number', 'aadhaar', 'text' , 'Aadhar No.'],
             ['Passport Number', 'passport', 'text', 'Passport No.'],
             ['DL Number', 'dl', 'text' , 'Dl No.'],
             ['Voter ID Number', 'voter', 'text' , 'Voter Id No.'],
@@ -106,7 +131,7 @@ const handleSubmit = async (e) => {
                 placeholder={placeholder}
                 onChange={handleChange}
                 className="flex-1 border border-gray-300 p-2 rounded bg-gray-100 text-black"
-                required
+                
                 />
             </div>
             ))}
@@ -122,9 +147,9 @@ const handleSubmit = async (e) => {
                 required
             >
                 <option value="">Select Gender</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Other</option>
+                <option value="MALE">Male</option>
+                <option value="FEMALE">Female</option>
+                <option value="OTHER">Other</option>
             </select>
             </div>
 
@@ -138,15 +163,15 @@ const handleSubmit = async (e) => {
                 required
             >
                 <option value="">Select Status</option>
-                <option>Active</option>
-                <option>Inactive</option>
+                <option value="ACTIVE">Active</option>
+                <option value="INACTIVE">Inactive</option>
             </select>
             </div>
 
             {/* File Uploads */}
             {[
             ['Profile Picture', 'profilePic'],
-            ['Adhaar Card Picture', 'adhaarPic'],
+            ['Adhaar Card Picture', 'aadhaarPic'],
             ['Passport Picture', 'passportPic'],
             ['DL Picture', 'dlPic'],
             ['Voter Card Picture', 'voterPic'],
@@ -160,7 +185,6 @@ const handleSubmit = async (e) => {
                 onChange={handleChange}
                 className="flex-1 border border-gray-300 p-2 rounded bg-gray-100 text-black"
                 accept="image/*"
-                required
                 />
             </div>
             ))}
