@@ -1,0 +1,36 @@
+/* Button.css */
+.button {
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+.button:disabled {
+  background-color: #d3d3d3;
+  cursor: not-allowed;
+}
+
+.button-blue {
+  background-color: #3b82f6; /* blue */
+  color: white;
+}
+
+.button-red {
+  background-color: #ef4444; /* red */
+  color: white;
+}
+
+.button-green {
+  background-color: #10b981; /* green */
+  color: white;
+}
+
+.button-gray {
+  background-color: #9ca3af; /* gray */
+  color: white;
+}
