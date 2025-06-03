@@ -61,7 +61,7 @@ function Navbar() {
             />
           </svg>
           <h2 className="text-sm md:text-lg md:font-semibold text-black">
-            Abhishek Kumar
+            User
           </h2>
           {showMenu ? (
             <svg

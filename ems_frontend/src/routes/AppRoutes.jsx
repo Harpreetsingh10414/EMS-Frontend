@@ -18,6 +18,8 @@ import AllLeaves from "../components/Leave_management/AllLeaves"; // Manager vie
 import ApplyLeave from "../components/My_Leave/ApplyLeave";
 import MyLeaves from "../components/My_Leave/MyLeaves";
 
+import AllTickets from "../components/Tickets/AllTickets";
+
 export default function AppRoutes() {
   return (
     <BrowserRouter>
@@ -56,6 +58,9 @@ export default function AppRoutes() {
           <Route path="/leave-management/all_leave" element={<All_leave />} />
           <Route path="/my-leave/apply-leave" element={<ApplyLeave />} />
           <Route path="/my-leave/my-leaves" element={<MyLeaves />} />
+
+
+          <Route path="/tickets/all_tickets" element={<AllTickets />} />
         </Route>
 
         <Route path="/login" element={<Login />} />

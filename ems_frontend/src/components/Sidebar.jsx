@@ -81,7 +81,7 @@ function Sidebar() {
                   alt="profile photo"
                 />
                 <h2 className="text-black text-sm md:text-[16px]">
-                  Abhishek Kumar.
+                  User
                 </h2>
                 <h3 className="text-black text-sm md:text-[16px]">
                   Software Developer

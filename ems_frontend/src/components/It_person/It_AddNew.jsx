@@ -42,7 +42,7 @@ const It_AddNew = () => {
     }
     console.log("Form submitted:", data);
     try {
-      const response = await api.post("/postuser", data, {
+      const response = await api.post("http://localhost:8081/admin/add", data, {
         headers: {
           "Content-Type": "multipart/form-data", // override the default
         },
@@ -171,7 +171,7 @@ const It_AddNew = () => {
                 onChange={handleChange}
                 className="flex-1 border border-gray-300 p-2 rounded bg-gray-100 text-black"
                 accept="image/*"
-                required
+                
               />
             </div>
           ))}
