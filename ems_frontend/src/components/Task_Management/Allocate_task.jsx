@@ -4,9 +4,7 @@ function Allocate_task() {
   return (
     <div className="bg-white p-4 rounded flex flex-col gap-4">
       <div>
-        <h2 className="text-black text-xl font-semibold text-center">
-          Allocate Task
-        </h2>
+        <h2 className="text-red-500 text-xl font-semibold ">Allocate Task</h2>
       </div>
       <div className="flex flex-col gap-1">
         <label className="text-black text-lg" htmlFor="sel_employee">
@@ -24,9 +22,9 @@ function Allocate_task() {
           <option value="0004">Harshpreet</option>
           <option value="0005">Gaurav</option>
           <option value="0006">Aniket</option>
-          <option value="0006">Nikhil</option>
-          <option value="0006">Ankit</option>
-          <option value="0006">Rohit</option>
+          <option value="0007">Nikhil</option>
+          <option value="0008">Ankit</option>
+          <option value="0009">Rohit</option>
         </select>
       </div>
       <div className="flex flex-col gap-1">

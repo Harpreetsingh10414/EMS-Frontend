@@ -8,54 +8,33 @@ function Sidebar() {
   const navigate = useNavigate();
 
   const [showSidebar, setShowSidebar] = useState(false);
-  const [checkSidebar, setCheckSidebar] = useState(false);
   const [showTaskSubmenu, setShowTaskSubmenu] = useState(false);
   const [showItSubmenu, setShowItSubmenu] = useState(false);
   const [showLeaveSubmenu, setShowLeaveSubmenu] = useState(false);
   const [showAttSubmenu, setShowAttSubmenu] = useState(false);
 
-  const sidebarRef = useRef(null);
-
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      if (e.clientX <= 10) {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
         setShowSidebar(true);
-      }
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
+      } else {
         setShowSidebar(false);
       }
     };
-    if (showSidebar) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [showSidebar]);
 
-  const handleTaskSubMenu = () => {
-    setShowSidebar((prev) => !prev);
-  };
-  const handleItSubMenu = () => {
-    setShowSidebar((prev) => !prev);
-  };
-  const handleLeaveSubMenu = () => {
-    setShowSidebar((prev) => !prev);
-  };
-  const handleAttSubMenu = () => {
-    setShowSidebar((prev) => !prev);
-  };
+    // Set initial sidebar state
+    handleResize();
+
+    // Add resize event listener
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup listener on unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const toggleSidebar = () => {
-    setCheckSidebar((prev) => !prev);
     setShowSidebar((prev) => !prev);
   };
 
@@ -68,10 +47,7 @@ function Sidebar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -10 }}
             transition={{ duration: 0.2 }}
-            className="max-w-fit h-screen bg-neutral-200 shadow-md z-50"
-            onMouseLeave={() => {
-              if (!checkSidebar) setShowSidebar(false);
-            }}
+            className="w-screen md:max-w-fit px-2 z-50"
           >
             <div className="flex flex-col gap-1">
               <div className="flex items-center flex-col justify-center mt-4 gap-1 mb-4 px-2">
@@ -89,7 +65,12 @@ function Sidebar() {
               </div>
               <div className="flex flex-col gap-0.5">
                 <button
-                  onClick={() => navigate("/dashboard")}
+                  onClick={() => {
+                    if (window.innerWidth < 768) {
+                      setShowSidebar(false);
+                    }
+                    navigate("/dashboard");
+                  }}
                   className="flex gap-1 items-center p-0.5 px-2 hover:bg-gray-300 cursor-pointer"
                 >
                   <span className="w-[24px] text-lg">🏠</span>
@@ -119,14 +100,24 @@ function Sidebar() {
                         className="ml-6 flex flex-col"
                       >
                         <button
-                          onClick={() => navigate("/it-person/add-new")}
+                          onClick={() => {
+                            if (window.innerWidth < 768) {
+                              setShowSidebar(false);
+                            }
+                            navigate("/it-person/add-new");
+                          }}
                           className="text-left text-black text-sm py-1 px-2 hover:bg-gray-300  cursor-pointer"
                         >
                           ➕ Add New
                         </button>
 
                         <button
-                          onClick={() => navigate("/it-person/view-all")}
+                          onClick={() => {
+                            if (window.innerWidth < 768) {
+                              setShowSidebar(false);
+                            }
+                            navigate("/it-person/view-all");
+                          }}
                           className="text-left text-black text-sm py-1 px-2 hover:bg-gray-300  cursor-pointer"
                         >
                           📋 View All
@@ -156,18 +147,24 @@ function Sidebar() {
                         className="ml-6 flex flex-col"
                       >
                         <button
-                          onClick={() =>
-                            navigate("/leave-management/employee-wise")
-                          }
+                          onClick={() => {
+                            if (window.innerWidth < 768) {
+                              setShowSidebar(false);
+                            }
+                            navigate("/leave-management/employee-wise");
+                          }}
                           className="text-left text-black text-sm py-1 px-2 hover:bg-gray-300  cursor-pointer"
                         >
                           👨‍💻 Employee Wise
                         </button>
 
                         <button
-                          onClick={() =>
-                            navigate("/leave-management/all_leave")
-                          }
+                          onClick={() => {
+                            if (window.innerWidth < 768) {
+                              setShowSidebar(false);
+                            }
+                            navigate("/leave-management/all_leave");
+                          }}
                           className="text-left text-black text-sm py-1 px-2 hover:bg-gray-300  cursor-pointer"
                         >
                           📋 All Leaves
@@ -197,14 +194,24 @@ function Sidebar() {
                         className="ml-6 flex flex-col"
                       >
                         <button
-                          onClick={() => navigate("/attendence/employee-wise")}
+                          onClick={() => {
+                            if (window.innerWidth < 768) {
+                              setShowSidebar(false);
+                            }
+                            navigate("/attendence/employee-wise");
+                          }}
                           className="text-left text-black text-sm py-1 px-2 hover:bg-gray-300  cursor-pointer"
                         >
                           👨‍💻 Employee Wise
                         </button>
 
                         <button
-                          onClick={() => navigate("/attendence/all-attendence")}
+                          onClick={() => {
+                            if (window.innerWidth < 768) {
+                              setShowSidebar(false);
+                            }
+                            navigate("/attendence/all-attendence");
+                          }}
                           className="text-left text-black text-sm py-1 px-2 hover:bg-gray-300  cursor-pointer"
                         >
                           📋 All Attendence
@@ -235,23 +242,34 @@ function Sidebar() {
                         className="ml-6 flex flex-col"
                       >
                         <button
-                          onClick={() =>
-                            navigate("/task-management/allocate-task")
-                          }
+                          onClick={() => {
+                            if (window.innerWidth < 768) {
+                              setShowSidebar(false);
+                            }
+                            navigate("/task-management/allocate-task");
+                          }}
                           className="text-left text-black text-sm py-1 px-2 hover:bg-gray-300  cursor-pointer"
                         >
                           ➕ Allocate Task
                         </button>
                         <button
-                          onClick={() =>
-                            navigate("/task-management/allocated-task")
-                          }
+                          onClick={() => {
+                            if (window.innerWidth < 768) {
+                              setShowSidebar(false);
+                            }
+                            navigate("/task-management/allocated-task");
+                          }}
                           className="text-left text-black text-sm py-1 px-2 hover:bg-gray-300  cursor-pointer"
                         >
                           ✅ Allocated Task
                         </button>
                         <button
-                          onClick={() => navigate("/task-management/all-task")}
+                          onClick={() => {
+                            if (window.innerWidth < 768) {
+                              setShowSidebar(false);
+                            }
+                            navigate("/task-management/all-task");
+                          }}
                           className="text-left text-black text-sm py-1 px-2 hover:bg-gray-300  cursor-pointer"
                         >
                           📋 All Tasks
@@ -272,7 +290,7 @@ function Sidebar() {
       </AnimatePresence>
 
       <div
-        className="fixed bg-amber-600 p-4  rounded-full bottom-4  left-4 cursor-pointer"
+        className="block md:hidden  fixed bg-amber-600 p-4  rounded-full bottom-4  left-4 cursor-pointer"
         onClick={toggleSidebar}
       >
         <svg
