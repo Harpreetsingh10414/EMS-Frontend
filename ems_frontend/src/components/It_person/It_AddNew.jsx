@@ -43,7 +43,11 @@ const It_AddNew = () => {
     }
 
     try {
-      const response = await api.post("/admin/add", data);
+      const response = await api.post("http://localhost:8081/admin/add", data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       console.log("Upload successful:", response.data);
     } catch (error) {
       if (error.response) {
@@ -81,6 +85,27 @@ const It_AddNew = () => {
   //   }
   // };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //     console.log('Form Data:', formData);
+  //   const data = new FormData();
+  //   for (const key in formData) {
+  //     data.append(key, formData[key]);
+  //   }
+  //     console.log('Form submitted:', data);
+  //   try {
+  //     const response = await api.post("/admin/add", data, {
+  //       headers: {
+  //         "Content-Type": "multipart/form-data", // override the default
+  //          withCredentials: false
+  //       },
+  //     });
+  //     console.log("Upload successful:", response.data);
+  //   } catch (error) {
+  //     console.error("Upload failed:", error);
+  //   }
+  // };
+
   const handleReset = () => {
     setFormData({
       empName: "",
@@ -94,7 +119,7 @@ const It_AddNew = () => {
       designation: "",
       salary: "",
       gender: "",
-      status: "",
+      status: "INACTIVE",
       profilePic: null,
       aadhaarPic: null,
       passportPic: null,
@@ -162,22 +187,20 @@ const It_AddNew = () => {
             </select>
           </div>
 
-          <div className="flex items-center space-x-4">
-            <label className="w-1/3 text-sm font-medium text-gray-700">
-              Status:
-            </label>
+          {/* <div className="flex items-center space-x-4">
+            <label className="w-1/3 text-sm font-medium text-gray-700">Status:</label>
             <select
-              name="status"
-              value={formData.status}
-              onChange={handleChange}
-              className="flex-1 border border-gray-300 p-2 rounded bg-gray-100 text-black"
-              required
+                name="status"
+                value={formData.status}
+                onChange={handleChange}
+                className="flex-1 border border-gray-300 p-2 rounded bg-gray-100 text-black"
+                required
             >
-              <option value="">Select Status</option>
-              <option value="ACTIVE">Active</option>
-              <option value="INACTIVE">Inactive</option>
+                <option value="">Select Status</option>
+                <option value="ACTIVE">Active</option>
+                <option value="INACTIVE">Inactive</option>
             </select>
-          </div>
+            </div> */}
 
           {/* File Uploads */}
           {[
