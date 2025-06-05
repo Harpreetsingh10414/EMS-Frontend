@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+//import AllLeaves from "../components/Leave_management/AllLeaves";
 // import "./Leave.css";
 
 const leaveTypes = ["Sick Leave", "Casual Leave", "Special Leave"];
@@ -36,7 +37,8 @@ export default function ApplyLeave() {
       responsible,
       reason,
     });
-  };
+  }; // Manager view
+
 
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-2xl shadow-xl mt-6">

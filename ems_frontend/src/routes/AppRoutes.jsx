@@ -14,9 +14,11 @@ import Allocate_task from "../components/Task_Management/Allocate_task";
 import Allocated_task from "../components/Task_Management/Allocated_task";
 import All_task from "../components/Task_Management/All_task";
 
-import AllLeaves from "../components/Leave_management/AllLeaves"; // Manager view
-import ApplyLeave from "../components/My_Leave/ApplyLeave";
-import MyLeaves from "../components/My_Leave/MyLeaves";
+//import AllLeaves from "../components/Leave_management/AllLeaves"; // Manager view
+//import ApplyLeave from "../components/My_Leave/ApplyLeave";
+import ApplyLeave from "../components/My_leave/ApplyLeave";
+//import MyLeaves from "../components/My_Leave/MyLeaves";
+import MyLeaves from "../components/My_leave/MyLeaves"
 
 export default function AppRoutes() {
   return (

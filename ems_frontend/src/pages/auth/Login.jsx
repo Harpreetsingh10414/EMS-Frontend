@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import api from "../../routes/Api";
-import Button from "../../UI/Button";
+//import Button from "../../UI/Button";
+import Button from "../../ui/Button";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
