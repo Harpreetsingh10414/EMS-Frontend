@@ -19,6 +19,8 @@ import ApplyLeave from "../components/My_Leave/ApplyLeave";
 import MyLeaves from "../components/My_Leave/MyLeaves";
 
 import AllTickets from "../components/Tickets/AllTickets";
+import ManageIDP from "../components/manageIDP";
+import Logout from "../components/Logout";
 
 export default function AppRoutes() {
   return (
@@ -49,7 +51,6 @@ export default function AppRoutes() {
             element={<Allocated_task />}
           />
           <Route path="/task-management/all-task" element={<All_task />} />
-
           {/* Leave Management Routes */}
           <Route
             path="/leave-management/employee-wise"
@@ -58,12 +59,12 @@ export default function AppRoutes() {
           <Route path="/leave-management/all_leave" element={<All_leave />} />
           <Route path="/my-leave/apply-leave" element={<ApplyLeave />} />
           <Route path="/my-leave/my-leaves" element={<MyLeaves />} />
-
-
+          <Route path="/manage-idp" element={<ManageIDP />} />
           <Route path="/tickets/all_tickets" element={<AllTickets />} />
         </Route>
-
         <Route path="/login" element={<Login />} />
+
+        <Route path="/logout" element={<Logout />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

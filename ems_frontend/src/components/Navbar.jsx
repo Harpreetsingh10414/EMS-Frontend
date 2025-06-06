@@ -1,7 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useDispatch } from "react-redux";
+
+import { logout } from "../redux/slice/authSlice";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const dispatch = useDispatch(); // ✅ Call this at the top
+  const navigate = useNavigate(); // ✅ Call this at the top
   const [showMenu, setShowMenu] = useState(false);
 
   const [isTouch, setIsTouch] = useState(false);
@@ -33,6 +39,11 @@ function Navbar() {
   };
   const handleMouseEnter = () => setShowMenu(true);
   const handleMouseLeave = () => setShowMenu(false);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/login");
+  };
 
   return (
     <div className="w-full h-[50px] flex justify-between items-center px-4 py-2 bg-neutral-200 relative">
@@ -161,6 +172,7 @@ function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2 }}
+                  onClick={handleLogout}
                   className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex gap-1"
                 >
                   <svg

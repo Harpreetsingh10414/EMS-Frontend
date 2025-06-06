@@ -130,8 +130,8 @@ const It_AddNew = () => {
   };
 
   return (
-    <div className="w-full min-h-screen overflow-y-auto flex items-center justify-center p-6">
-      <div className="p-6 bg-white max-w-4xl mx-auto shadow-md rounded-md mt-10">
+    <div className="w-full flex ">
+      <div className="w-full p-3 bg-white   shadow-md rounded-md ">
         <h2 className="text-xl text-red-500 font-semibold mb-6">
           Add IT Professional
         </h2>
