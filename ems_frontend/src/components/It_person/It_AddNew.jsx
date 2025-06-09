@@ -40,7 +40,16 @@ const It_AddNew = () => {
         data.append(key, formData[key]);
       }
     }
+    e.preventDefault();
+    const data = new FormData();
+    for (const key in formData) {
+      if (formData[key] !== null) {
+        data.append(key, formData[key]);
+      }
+    }
 
+    try {
+      const response = await api.post("http://localhost:8081/admin/add", data, {
     try {
       const response = await api.post("http://localhost:8081/admin/add", data, {
         headers: {
@@ -67,18 +76,18 @@ const It_AddNew = () => {
 
   const handleReset = () => {
     setFormData({
-      empName: '',
-      email: '',
-      phone: '',
-      aadhaar: '',
-      passport: '',
-      dl: '',
-      voter: '',
-      pan: '',
-      designation: '',
-      salary: '',
-      gender: '',
-      status: 'INACTIVE',
+      empName: "",
+      email: "",
+      phone: "",
+      aadhaar: "",
+      passport: "",
+      dl: "",
+      voter: "",
+      pan: "",
+      designation: "",
+      salary: "",
+      gender: "",
+      status: "INACTIVE",
       profilePic: null,
       aadhaarPic: null,
       passportPic: null,
@@ -147,29 +156,37 @@ const It_AddNew = () => {
             ['PAN Card Picture', 'panPic'],
           ].map(([label, name]) => (
             <div key={name} className="flex items-center space-x-4">
-              <label className="w-1/3 text-sm font-medium text-gray-700">{label}:</label>
-              <input
+                <label className="w-1/3 text-sm font-medium text-gray-700">{label}:</label>
+                <input
                 type="file"
                 name={name}
                 onChange={handleChange}
                 className="flex-1 border border-gray-300 p-2 rounded bg-gray-100 text-black"
                 accept="image/*"
               />
+              />
             </div>
           ))}
+          ))}
 
+          {/* Buttons */}
+          <div className="flex space-x-4 mt-6 justify-end">
           {/* Buttons */}
           <div className="flex space-x-4 mt-6 justify-end">
             <button
               type="submit"
               className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"
+              type="submit"
+              className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"
             >
+              Submit
               Submit
             </button>
             <button
               type="reset"
               className="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400"
             >
+              Cancel
               Cancel
             </button>
           </div>

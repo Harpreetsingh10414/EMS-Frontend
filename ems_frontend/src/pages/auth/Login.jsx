@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import api from "../../routes/Api";
 import Button from "../../UI/Button";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({ email: "", password: "" });
 
   function handleChange(e) {
@@ -14,15 +17,25 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await api.post("/auth/login", formData);
-      console.log("Login success:", response.data);
-      // Handle successful login (e.g., redirect or store token)
+      // 🔒 Simulate login or use actual API
+      // const response = await api.post("/auth/login", formData);
+      // const user = response.data.user;
+
+      // Temporary mocked user (for demo)
+      const user = {
+        email: formData.email,
+        role: "employee", // or "manager"
+      };
+
+      // ✅ Store in localStorage
+      localStorage.setItem("user", JSON.stringify(user));
+
+      console.log("Login success");
+      navigate("/"); // Redirect to protected route
     } catch (error) {
       console.error("Login failed:", error);
-      // Handle login failure (e.g., show error to user)
     }
   }
-
   return (
     <div className="w-full h-dvh p-8 flex flex-col justify-center items-center">
       <div className="md:w-[50%] lg:w-[40%] xl:w-[30%] h-dvh bg-amber-50 p-4 md:p-8 rounded-xl">
@@ -51,11 +64,11 @@ const Login = () => {
               value={formData.password}
               onChange={handleChange}
               placeholder="Password"
-              className="w-full p-2 mb-2 border rounded placeholder-black border-black text-black"
+              className="w-full p-2  border rounded placeholder-black border-black text-black mb-4"
             />
-            <p className="text-end text-black text-lg md:text-sm mb-4 opacity-70 cursor-pointer">
+            {/* <p className="text-end text-black text-lg md:text-sm mb-4 opacity-70 cursor-pointer">
               Forgot Password
-            </p>
+            </p> */}
             <Button
               type="submit"
               className="w-full text-lg py-2"
