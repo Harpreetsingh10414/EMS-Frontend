@@ -1,25 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import { motion } from "framer-motion";
 import Sidebar from "../components/Sidebar";
-import { Outlet } from "react-router-dom"; // For rendering nested routes
-// import AnimatedOutlet from "../components/AniOutlet";
+import { Outlet } from "react-router-dom";
+import { motion } from "framer-motion";
 
 function Layout() {
-  return (
-    <div className="flex flex-col min-h-screen">
-      {/* Top Navbar */}
-      <Navbar />
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true); // 👈 Controls when to show layout
 
-      {/* Main content area: Sidebar + Dynamic Content */}
-      <div className="flex flex-1">
-        {/* Left Sidebar */}
-        <div className="w-fit">
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+
+    if (!user) {
+      navigate("/login");
+    } else {
+      setLoading(false); // ✅ Show layout only when user exists
+    }
+  }, [navigate]);
+
+  if (loading) return null; // 👈 Avoid showing layout during auth check
+
+  return (
+    <div className="flex flex-col min-h-screen relative">
+      {/* Top Navbar */}
+      <div className="sticky top-0 z-50">
+        <Navbar />
+      </div>
+
+      <div className="flex">
+        <div className="bg-neutral-200 min-h-[calc(100vh-50px)] overflow-auto">
           <Sidebar />
         </div>
 
-        {/* Main Content Area */}
         <motion.div
           layout
           transition={{ duration: 0.3 }}
@@ -28,8 +41,6 @@ function Layout() {
           <Outlet />
         </motion.div>
       </div>
-
-      {/* Bottom Footer <Footer /> */}
     </div>
   );
 }

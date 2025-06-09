@@ -85,6 +85,27 @@ const It_AddNew = () => {
   //   }
   // };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //     console.log('Form Data:', formData);
+  //   const data = new FormData();
+  //   for (const key in formData) {
+  //     data.append(key, formData[key]);
+  //   }
+  //     console.log('Form submitted:', data);
+  //   try {
+  //     const response = await api.post("/admin/add", data, {
+  //       headers: {
+  //         "Content-Type": "multipart/form-data", // override the default
+  //          withCredentials: false
+  //       },
+  //     });
+  //     console.log("Upload successful:", response.data);
+  //   } catch (error) {
+  //     console.error("Upload failed:", error);
+  //   }
+  // };
+
   const handleReset = () => {
     setFormData({
       empName: "",

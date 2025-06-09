@@ -1,6 +1,6 @@
 import "./Leave.css";
 export default function All_leave() {
-  const today = new Date().toISOString().split("T")[0];
+  const today = new Date().toISOString().split("T")[0]; // assuming this is defined somewhere
 
   const allLeaves = [
     {
@@ -9,7 +9,42 @@ export default function All_leave() {
       to: "2025-05-16",
       type: "Casual Leave",
     },
-    { name: "Bob", from: today, to: today, type: "Sick Leave" },
+    {
+      name: "Bob",
+      from: today,
+      to: today,
+      type: "Sick Leave",
+    },
+    {
+      name: "Charlie",
+      from: "2025-06-01",
+      to: "2025-06-03",
+      type: "Annual Leave",
+    },
+    {
+      name: "Diana",
+      from: "2025-05-28",
+      to: "2025-05-28",
+      type: "Sick Leave",
+    },
+    {
+      name: "Ethan",
+      from: "2025-06-05",
+      to: "2025-06-07",
+      type: "Maternity Leave",
+    },
+    {
+      name: "Fatima",
+      from: "2025-06-10",
+      to: "2025-06-12",
+      type: "Casual Leave",
+    },
+    {
+      name: "George",
+      from: "2025-05-20",
+      to: "2025-05-21",
+      type: "Unpaid Leave",
+    },
   ];
 
   const todayLeaves = allLeaves.filter(
@@ -19,9 +54,9 @@ export default function All_leave() {
   const upcomingLeaves = allLeaves.filter((leave) => leave.from > today);
 
   return (
-    <div className="max-w-4xl mx-auto mt-8 p-4 bg-white rounded-xl shadow-lg">
-      <h2 className="text-2xl font-semibold text-center mb-4">
-        Manager Dashboard
+    <div className="w-full  p-4 bg-white rounded shadow-lg text-black">
+      <h2 className="text-2xl text-red-500 font-semibold  mb-4">
+        Leave Management
       </h2>
 
       <div>
