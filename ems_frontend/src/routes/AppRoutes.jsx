@@ -21,6 +21,9 @@ import MyLeaves from "../components/My_Leave/MyLeaves";
 import AllTickets from "../components/Tickets/AllTickets";
 import ManageIDP from "../components/manageIDP";
 import Logout from "../components/Logout";
+import MyTask from "../components/Task_Management/MyTask";
+import Attendance from "../components/Attendence/Attendance";
+import Profile from "../components/Profile";
 
 export default function AppRoutes() {
   return (
@@ -34,13 +37,14 @@ export default function AppRoutes() {
           <Route path="/it-person/view-all" element={<It_ViewAll />} />
           {/* Attendece Routes */}
           <Route
-            path="/attendence/employee-wise"
+            path="/attendance/employee-wise"
             element={<Employee_wise_attendence />}
           />
           <Route
-            path="/attendence/all-attendence"
+            path="/attendance/all-attendence"
             element={<All_attendence />}
           />
+          <Route path="/attendance" element={<Attendance />} />
           {/* Task Management Routes */}
           <Route
             path="/task-management/allocate-task"
@@ -51,6 +55,7 @@ export default function AppRoutes() {
             element={<Allocated_task />}
           />
           <Route path="/task-management/all-task" element={<All_task />} />
+          <Route path="/my-tasks" element={<MyTask />} />
           {/* Leave Management Routes */}
           <Route
             path="/leave-management/employee-wise"
@@ -61,6 +66,7 @@ export default function AppRoutes() {
           <Route path="/my-leave/my-leaves" element={<MyLeaves />} />
           <Route path="/manage-idp" element={<ManageIDP />} />
           <Route path="/tickets/all_tickets" element={<AllTickets />} />
+          <Route path="/profile" element={<Profile />} />
         </Route>
         <Route path="/login" element={<Login />} />
 

@@ -9,6 +9,7 @@ function Navbar() {
   const dispatch = useDispatch(); // ✅ Call this at the top
   const navigate = useNavigate(); // ✅ Call this at the top
   const [showMenu, setShowMenu] = useState(false);
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const [isTouch, setIsTouch] = useState(false);
   const menuRef = useRef(null);
@@ -72,7 +73,7 @@ function Navbar() {
             />
           </svg>
           <h2 className="text-sm md:text-lg md:font-semibold text-black">
-            User
+            {user ? user.email : "User"}
           </h2>
           {showMenu ? (
             <svg
@@ -128,6 +129,9 @@ function Navbar() {
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2 }}
                   className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex gap-1"
+                  onClick={() => {
+                    navigate("/profile");
+                  }}
                 >
                   <svg
                     className="w-[21px] h-[21px]"

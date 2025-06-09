@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Button from "../../UI/Button";
 //import { Button } from "@/components/ui/button";
 //import { saveAs } from "file-saver";
 
- function AllTickets() {
+function AllTickets() {
   const [tickets, setTickets] = useState([]);
   const [selectedRows, setSelectedRows] = useState([]);
 
@@ -64,17 +65,16 @@ import axios from "axios";
       t.raisedOn,
     ]);
 
-    const csvContent =
-      [header, ...rows]
-        .map((e) => e.map((val) => `"${val}"`).join(","))
-        .join("\n");
+    const csvContent = [header, ...rows]
+      .map((e) => e.map((val) => `"${val}"`).join(","))
+      .join("\n");
 
     const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
     saveAs(blob, "tickets_export.csv");
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 text-black">
       <h1 className="text-2xl font-semibold mb-4">All Raised Tickets</h1>
       <div className="mb-4 flex justify-between items-center">
         <select className="border rounded p-2" onChange={exportCSV}>
@@ -140,15 +140,20 @@ import axios from "axios";
                   )}
                 </td>
                 <td className="p-2 border">
-                  {ticket.raisedByRole} / {ticket.raisedByName} / {ticket.raisedByEmail}
+                  {ticket.raisedByRole} / {ticket.raisedByName} /{" "}
+                  {ticket.raisedByEmail}
                 </td>
                 <td className="p-2 border text-center">{ticket.status}</td>
                 <td className="p-2 border text-center">{ticket.userIP}</td>
                 <td className="p-2 border text-center">{ticket.raisedOn}</td>
                 <td className="p-2 border text-center space-y-1">
-                  <Button className="bg-blue-500 text-white w-full">View Comments</Button>
+                  <Button className="bg-blue-500 text-white w-full">
+                    View Comments
+                  </Button>
                   {ticket.status === "open" && (
-                    <Button className="bg-blue-500 text-white w-full">Add Comment</Button>
+                    <Button className="bg-blue-500 text-white w-full">
+                      Add Comment
+                    </Button>
                   )}
                 </td>
               </tr>
@@ -156,12 +161,12 @@ import axios from "axios";
           </tbody>
         </table>
         <p className="text-sm text-gray-600 mt-2">
-          Showing {tickets.length > 0 ? `1 to ${tickets.length}` : 0} of {tickets.length} rows
+          Showing {tickets.length > 0 ? `1 to ${tickets.length}` : 0} of{" "}
+          {tickets.length} rows
         </p>
       </div>
     </div>
   );
 }
-
 
 export default AllTickets;
