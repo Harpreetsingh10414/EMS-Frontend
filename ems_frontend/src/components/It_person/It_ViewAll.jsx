@@ -45,8 +45,7 @@ const It_ViewALL = () => {
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border border-gray-300 shadow-sm">
           <thead className="bg-gray-100 text-sm text-gray-700">
-            <tr>
-              <th className="border px-3 py-2"><input type="checkbox" /></th>
+            <tr> 
               <th className="border px-3 py-2">#</th>
               <th className="border px-3 py-2">Person Name</th>
               <th className="border px-3 py-2">Gender</th>
@@ -68,7 +67,7 @@ const It_ViewALL = () => {
           <tbody>
             {professionals.map((person, index) => (
               <tr key={person.id} className="text-sm text-gray-800">
-                <td className="border px-3 py-2"><input type="checkbox" /></td>
+                
                 <td className="border px-3 py-2">{index + 1}</td>
                 <td className="border px-3 py-2">{person.empName}</td>
                 <td className="border px-3 py-2">{person.gender}</td>

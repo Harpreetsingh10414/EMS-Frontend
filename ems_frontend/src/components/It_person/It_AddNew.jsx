@@ -14,7 +14,8 @@ const It_AddNew = () => {
     designation: '',
     salary: '',
     gender: '',
-    status: 'INACTIVE',
+    status: 'inactive',
+    role: 'employee', 
     profilePic: null,
     aadhaarPic: null,
     passportPic: null,
@@ -40,16 +41,7 @@ const It_AddNew = () => {
         data.append(key, formData[key]);
       }
     }
-    e.preventDefault();
-    const data = new FormData();
-    for (const key in formData) {
-      if (formData[key] !== null) {
-        data.append(key, formData[key]);
-      }
-    }
 
-    try {
-      const response = await api.post("http://localhost:8081/admin/add", data, {
     try {
       const response = await api.post("http://localhost:8081/admin/add", data, {
         headers: {
@@ -58,10 +50,9 @@ const It_AddNew = () => {
       });
       console.log("Upload successful:", response.data);
 
-      // ✅ Show popup
       window.alert("Employee added successfully!");
 
-      // ✅ Reset form
+    
       handleReset();
     } catch (error) {
       if (error.response) {
@@ -76,19 +67,19 @@ const It_AddNew = () => {
 
   const handleReset = () => {
     setFormData({
-      empName: "",
-      email: "",
-      phone: "",
-      aadhaar: "",
-      passport: "",
-      dl: "",
-      voter: "",
-      pan: "",
-      designation: "",
-      salary: "",
-      gender: "",
-      status: "INACTIVE",
-      profilePic: null,
+      empName: '',
+      email: '',
+      phone: '',
+      aadhaar: '',
+      passport: '',
+      dl: '',
+      voter: '',
+      pan: '',
+      designation: '',
+      salary: '',
+      gender: '',
+      status: 'inactive',
+      role: 'employee',
       aadhaarPic: null,
       passportPic: null,
       dlPic: null,
@@ -126,9 +117,7 @@ const It_AddNew = () => {
                 onChange={handleChange}
                 className="flex-1 border border-gray-300 p-2 rounded bg-gray-100 text-black"
               />
-              />
             </div>
-          ))}
           ))}
 
           {/* Gender Dropdown */}
@@ -141,10 +130,6 @@ const It_AddNew = () => {
               className="flex-1 border border-gray-300 p-2 rounded bg-gray-100 text-black"
               required
             >
-              <option value="">Select Gender</option>
-              <option value="MALE">Male</option>
-              <option value="FEMALE">Female</option>
-              <option value="OTHER">Other</option>
               <option value="">Select Gender</option>
               <option value="MALE">Male</option>
               <option value="FEMALE">Female</option>
@@ -170,37 +155,25 @@ const It_AddNew = () => {
                 className="flex-1 border border-gray-300 p-2 rounded bg-gray-100 text-black"
                 accept="image/*"
               />
-              />
             </div>
-          ))}
           ))}
 
           {/* Buttons */}
           <div className="flex space-x-4 mt-6 justify-end">
-          {/* Buttons */}
-          <div className="flex space-x-4 mt-6 justify-end">
             <button
               type="submit"
               className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"
-              type="submit"
-              className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"
             >
-              Submit
               Submit
             </button>
             <button
               type="reset"
               className="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400"
-              type="reset"
-              className="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400"
             >
               Cancel
-              Cancel
             </button>
-          </div>
           </div>
         </form>
-      </div>
       </div>
     </div>
   );
