@@ -25,15 +25,16 @@ const It_ViewALL = () => {
     const payload = {
       email,
       status: formData[email]?.status || "",
-      comment: formData[email]?.comment || ""
+      comment: formData[email]?.comment || "",
+      role: formData[email]?.role || ""
     };
 
     axios.post("http://localhost:8081/admin/updateStatus", payload)
       .then(() => {
-        alert(`Status updated for ${email}`);
+        alert(`Data updated for ${email}`);
       })
       .catch(error => {
-        console.error("Failed to update status:", error +">>>>"+formData);
+        console.error("Failed to update:", error, formData);
         alert("Error while updating.");
       });
   };
@@ -59,6 +60,7 @@ const It_ViewALL = () => {
               <th className="border px-3 py-2">Designation</th>
               <th className="border px-3 py-2">Monthly Salary</th>
               <th className="border px-3 py-2">Status</th>
+              <th className="border px-3 py-2">Role</th>
               <th className="border px-3 py-2">Comment</th>
               <th className="border px-3 py-2">Action</th>
             </tr>
@@ -70,7 +72,7 @@ const It_ViewALL = () => {
                 <td className="border px-3 py-2">{index + 1}</td>
                 <td className="border px-3 py-2">{person.empName}</td>
                 <td className="border px-3 py-2">{person.gender}</td>
-                <td className="border px-3 py-2">{person.email}</td> {/* email shown but not editable */}
+                <td className="border px-3 py-2">{person.email}</td>
                 <td className="border px-3 py-2">{person.phone}</td>
                 <td className="border px-3 py-2">{person.aadhaar}</td>
                 <td className="border px-3 py-2">{person.passport}</td>
@@ -89,7 +91,21 @@ const It_ViewALL = () => {
                   >
                     <option value="">Select Status</option>
                     <option value="active">Active</option>
-                    <option value="nonactive">Non-Active</option>
+                    <option value="inactive">In-Active</option>
+                  </select>
+                </td>
+
+                {/* Editable Role */}
+                <td className="border px-3 py-2">
+                  <select
+                    value={formData[person.email]?.role || ""}
+                    onChange={(e) => handleChange(person.email, "role", e.target.value)}
+                    className="border p-1 rounded"
+                  >
+                    <option value="">Select Role</option>
+                    <option value="employee">Employee</option>
+                    <option value="manager">Manager</option>
+                    <option value="admin">Admin</option>
                   </select>
                 </td>
 
