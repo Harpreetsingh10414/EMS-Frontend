@@ -126,7 +126,9 @@ const It_AddNew = () => {
                 onChange={handleChange}
                 className="flex-1 border border-gray-300 p-2 rounded bg-gray-100 text-black"
               />
+              />
             </div>
+          ))}
           ))}
 
           {/* Gender Dropdown */}
@@ -139,6 +141,10 @@ const It_AddNew = () => {
               className="flex-1 border border-gray-300 p-2 rounded bg-gray-100 text-black"
               required
             >
+              <option value="">Select Gender</option>
+              <option value="MALE">Male</option>
+              <option value="FEMALE">Female</option>
+              <option value="OTHER">Other</option>
               <option value="">Select Gender</option>
               <option value="MALE">Male</option>
               <option value="FEMALE">Female</option>
@@ -156,8 +162,8 @@ const It_AddNew = () => {
             ['PAN Card Picture', 'panPic'],
           ].map(([label, name]) => (
             <div key={name} className="flex items-center space-x-4">
-                <label className="w-1/3 text-sm font-medium text-gray-700">{label}:</label>
-                <input
+              <label className="w-1/3 text-sm font-medium text-gray-700">{label}:</label>
+              <input
                 type="file"
                 name={name}
                 onChange={handleChange}
@@ -185,12 +191,16 @@ const It_AddNew = () => {
             <button
               type="reset"
               className="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400"
+              type="reset"
+              className="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400"
             >
               Cancel
               Cancel
             </button>
           </div>
+          </div>
         </form>
+      </div>
       </div>
     </div>
   );
